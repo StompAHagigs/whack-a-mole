@@ -7,6 +7,7 @@ class Game:
         self.running = False
 
         pg.init()
+        pg.display.set_caption(WIN_TITLE)
         self.windowSurface = pg.display.set_mode(WIN_SIZE)
         self.clock = pg.time.Clock()
         self.running = True
