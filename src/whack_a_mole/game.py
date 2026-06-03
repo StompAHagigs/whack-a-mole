@@ -11,6 +11,7 @@ class Game:
         self.clock = pg.time.Clock()
         self.running = True
 
+        self.ballRadius: float = 32.0
         self.ballPosition = pg.math.Vector2(WIN_WIDTH/2.0, WIN_HEIGHT/2.0)
         self.ballDirection = pg.math.Vector2()
         self.ballSpeed: float = 400.0
@@ -37,17 +38,27 @@ class Game:
         if self.ballDirection != pg.math.Vector2():
             self.ballDirection.normalize_ip()
 
-        print(self.ballDirection)
-
 
     def update(self, dt: float):
         self.ballPosition += self.ballDirection * self.ballSpeed * dt
+
+        if self.ballPosition.x >= WIN_WIDTH - self.ballRadius:
+            self.ballPosition.x = WIN_WIDTH - self.ballRadius
+
+        if self.ballPosition.x <= self.ballRadius:
+            self.ballPosition.x = self.ballRadius
+
+        if self.ballPosition.y <= self.ballRadius:
+            self.ballPosition.y = self.ballRadius
+
+        if self.ballPosition.y >= WIN_HEIGHT - self.ballRadius:
+            self.ballPosition.y = WIN_HEIGHT - self.ballRadius
 
 
     def render(self):
         self.windowSurface.fill("#6495ED")
 
-        pg.draw.circle(self.windowSurface, "#FF0000", self.ballPosition, 32)
+        pg.draw.circle(self.windowSurface, "#FF0000", self.ballPosition, self.ballRadius)
 
         pg.display.update()
 

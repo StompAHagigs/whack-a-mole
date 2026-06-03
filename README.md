@@ -1,10 +1,11 @@
 # TODO
 
-* [ ] Game window
-* [ ] Game loop
-* [ ] Add player
-* [ ] Add player movement
-* [ ] Collisions with boundaries
+* [x] Game window
+* [x] Game loop
+* [x] Add player
+* [x] Add player movement
+* [x] Collisions with boundaries
+* [ ] Extract player logic to Player class
 * [ ] Dash movement
 * [ ] Dash cooldown timer
 * [ ] Add weapon (hammer)
